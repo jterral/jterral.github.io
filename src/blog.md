@@ -10,5 +10,5 @@ pagination:
     {% include article.html %}
   {% endfor %}
 
-  {% include pagination.html %}
+  <!-- {% include pagination.html %} -->
 </section>
