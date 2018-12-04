@@ -44,8 +44,8 @@ repo: https://github.com/jterral/jterral.github.io
 # Author settings
 author:
   name: Jonathan Trl
-  job: Design and Development Engineer
-  bio: "blabla bio."
+  job: Software Engineer
+  bio: "Currently working as .NET Core backend developer in Azure environment."
   thumb: /images/author.jpg
   url: https://jterral.github.io/
   github: https://github.com/jterral
