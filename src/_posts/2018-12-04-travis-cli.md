@@ -1,7 +1,8 @@
 ---
 layout: post
 title: "Travis CLI in Docker container"
-date:   2018-12-04 11:30:00
+description: "Building a Docker image to use Travis CLI."
+date: 2018-12-04 11:30:00
 comments: false
 image: /images/pages/travis.png
 keywords: "travis, docker"
@@ -12,6 +13,7 @@ tags:
 ---
 
 <h1>Dockerfile</h1>
+Dockerfile used to build an image with `Travis CLI`.
 
 ```dockerfile
 FROM ruby:alpine
@@ -27,4 +29,14 @@ VOLUME ["/workspace"]
 ENTRYPOINT ["travis"]
 ```
 
+# Build
+```
+docker build --tag jootl\travis-cli .
+```
+
 <h1>Usage</h1>
+To use, for example, the encryption tool :
+
+```bash
+docker -it --rm 
+```
