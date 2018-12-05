@@ -21,13 +21,13 @@ docker images
 
 ### Delete an image
 ```bash
-docker -rmi IMAGE_ID
+docker rmi IMAGE_ID
 ```
 
 ### Delete all dangling images
 To remove all `none/dangling` images:
 ```bash
-docker -rmi `$(docker --quiet --filter "dangling=true")`
+docker rmi `$(docker --quiet --filter "dangling=true")`
 ```
 
 ## Containers
@@ -38,7 +38,12 @@ docker ps -a
 
 ### Delete a container
 ```bash
-docker -rm container_name
+docker rm container_name
+```
+
+### Exec a command in running container
+```bash
+docker exec -it running_container_name bash
 ```
 
 # Docker Compose
