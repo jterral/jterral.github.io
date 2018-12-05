@@ -31,7 +31,7 @@ comments: false
 
 # SEO settings
 title: "Jterral's pages"
-description: "A short description of your site's purpose"
+description: "A website to save and share useful reminders."
 keywords: "blog, web, coding, developer"
 url: https://jterral.github.io/
 
@@ -45,7 +45,7 @@ repo: https://github.com/jterral/jterral.github.io
 author:
   name: Jonathan Trl
   job: Software Engineer
-  bio: "Currently working as .NET Core backend developer in Azure environment."
+  bio: "Currently working as .NET Core backend developer in an Azure environment."
   thumb: /images/author.jpg
   url: https://jterral.github.io/
   github: https://github.com/jterral
