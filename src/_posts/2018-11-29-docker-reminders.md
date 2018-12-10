@@ -27,7 +27,7 @@ docker rmi IMAGE_ID
 ### Delete all dangling images
 To remove all `none/dangling` images:
 ```bash
-docker rmi `$(docker --quiet --filter "dangling=true")`
+docker rmi $(docker images --quiet --filter "dangling=true")
 ```
 
 ## Containers
