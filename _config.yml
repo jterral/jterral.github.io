@@ -30,20 +30,20 @@ pagination:
 comments: false
 
 # SEO settings
-title: "Jterral's pages"
-description: "A website to save and share useful reminders."
-keywords: "blog, web, coding, developer"
+title: "Jonathan Terral's Home on The Web"
+description: "Jonathan Terral's Home on The Web - jterral aka jootl"
+keywords: "blog, web, coding, developer, jootl"
 url: https://jterral.github.io/
 
 # Custom
 repo: https://github.com/jterral/jterral.github.io
-# google_analytics: TODO
+google_analytics: UA-139648730-2
 # disqus_shortname: TODO
 # disqus_site_shortname: TODO
 
 # Author settings
 author:
-  name: Jonathan Trl
+  name: Jonathan Terral
   job: Software Engineer
   bio: "Currently working as .NET Core backend developer in Azure environment."
   thumb: /images/author.jpg
