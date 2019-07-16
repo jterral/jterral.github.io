@@ -3,5 +3,46 @@
 // About
 //
 
-.about-content
-    margin: .8em auto 1.2em
+.about-inner
+    width: 100%
+    display: table-cell
+    vertical-align: middle
+    text-align: center
+    color: $white-color
+
+    a
+        color: $secondary-color
+        text-decoration: none
+
+    .button
+        color: $secondary-color
+        border-color: $secondary-color
+
+    .about-content
+        margin: .8em auto 1.2em
+
+        animation-name: growContent
+        animation-duration: 1s
+        animation-timing-function: linear
+        animation-delay: 0s
+        animation-iteration-count: 1
+
+.icon-m
+    font-size: 1.5em
+
+.icon-border
+    padding: 10px
+    border-width: 0.1em
+    border-radius: 50%
+    border-color: $secondary-color
+    border-style: solid
+
+
+@keyframes growContent
+    from
+        visibility: hidden
+        opacity: 0
+
+    to
+        visibility: visible
+        opacity: 1
