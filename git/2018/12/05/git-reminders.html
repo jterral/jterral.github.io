@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover">
+
+<title>Git reminders</title>
+<meta name="description" content="Conventions to write good commit messagesThe first line cannot be longer than 70 characters, the second line is always blank and other lines should be wrappe...">
+
+<link rel="home" href="./">
+
+<meta name="application-name" content="Git reminders">
+<meta name="apple-mobile-web-app-title" content="Git reminders">
+
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<link rel="stylesheet" href="/css/main.css">
+<link rel="canonical" href="https://jterral.github.io//git/2018/12/05/git-reminders.html">
+<link rel="alternate" type="application/rss+xml" title="Jonathan Terral's Home on The Web" href="https://jterral.github.io//feed.xml" />
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-139648730-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+</head>
+<body>
+  <header class="site-header">
+  <div class="container">
+    <input type="checkbox" id="toggleNavbar">
+    <h1 class="logo">
+      <a href="/">joo<span>tl</span></a>
+    </h1>
+    <label for="toggleNavbar" role="button" class="toggle-navbar-button">
+      <i class="icon icon-menu"></i>
+      <i class="icon icon-cross"></i>
+    </label>
+    <nav class="navbar">
+      <ul>
+        <li><a href="/" title="Home">Home</a></li>
+        
+          <li><a href="/about" title="About">About</a></li>
+        
+          <li><a href="/blog" title="Blog">Blog</a></li>
+        
+        <li><a href="/feed.xml" target="_blank"><i class="icon icon-rss"></i></a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<main class="main-container">
+  <div class="container">
+    <article role="article" class="post">
+
+  <div class="card">
+    <header class="post-header">
+      <h1 class="post-title">Git reminders</h1>
+      <em class="post-meta">
+        <time>Dec 5, 2018</time>
+      </em>
+    </header>
+
+    <div class="post-content">
+      <h1 id="conventions-to-write-good-commit-messages">Conventions to write good commit messages</h1>
+<p>The first line cannot be longer than 70 characters, the second line is always blank and other lines should be wrapped at 80 characters. The type should always be lowercase as shown below.</p>
+<ul>
+  <li><code class="highlighter-rouge">feat</code> (new feature for the user, not a new feature for build script)</li>
+  <li><code class="highlighter-rouge">fix</code> (bug fix for the user, not a fix to a build script)</li>
+  <li><code class="highlighter-rouge">docs</code> (changes to the documentation)</li>
+  <li><code class="highlighter-rouge">style</code> (formatting, missing semi colons, Sonar fixes etc; no production code change)</li>
+  <li><code class="highlighter-rouge">refactor</code> (refactoring production code, eg. renaming a variable)</li>
+  <li><code class="highlighter-rouge">test</code> (adding missing tests, refactoring tests; no production code change)</li>
+  <li><code class="highlighter-rouge">chore</code> (updating npm tasks etc; no production code change)</li>
+</ul>
+
+<h1 id="reset">Reset</h1>
+<p>To reset the last commit not already pushed and keep changes in the “Staged changes” state:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git reset <span class="nt">--soft</span> HEAD~1
+</code></pre></div></div>
+
+    </div>
+
+    
+
+  </div>
+
+</article>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <ul class="social">
+  <li><a href="https://github.com/jterral" target="_blank"><i class="icon icon-github"></i></a></li>
+  <li><a href="https://twitter.com/Jonathan_Trl" target="_blank"><i class="icon icon-twitter"></i></a></li>
+  <li><a href="https://www.linkedin.com/in/jonathan-trl/" target="_blank"><i class="icon icon-linkedin"></i></a></li>
+</ul>
+    <p class="txt-medium-gray">
+      <small>&copy;2019 All rights reserved. Made with <a href="http://jekyllrb.com/" target="_blank">Jekyll</a></small>
+    </p>
+  </div>
+</footer>
+
+
+</body>
+</html>
