@@ -31,14 +31,15 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      gem install jekyll bundler
-
-- task: Bash@3
-  displayName: 'bundle install'
-  inputs:
-    targetType: 'inline'
-    script: |
+      CALL gem install jekyll bundler
       bundle install --retry=3 --jobs=4
+
+# - task: Bash@3
+#   displayName: 'bundle install'
+#   inputs:
+#     targetType: 'inline'
+#     script: |
+#       bundle install --retry=3 --jobs=4
 
 - task: Bash@3
   displayName: 'jekyll build'
