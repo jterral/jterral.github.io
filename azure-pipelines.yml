@@ -16,16 +16,22 @@ variables:
 steps:
 - task: UseRubyVersion@0
   inputs:
-    versionSpec: '>= 2.6'
+    versionSpec: '>= 2.5'
     addToPath: true
 
 - task: Bash@3
-  displayName: 'bundle install'
+  displayName: 'gem install'
   inputs:
     targetType: 'inline'
     script: |
       gem install jekyll bundler
-      bundle install
+
+# - task: Bash@3
+#   displayName: 'bundle install'
+#   inputs:
+#     targetType: 'inline'
+#     script: |
+#       bundle install
 
 - task: Bash@3
   displayName: 'jekyll build'
