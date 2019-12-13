@@ -1,0 +1,46 @@
+#
+# Azure Pipelines
+
+trigger:
+- gh-pages
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  NOKOGIRI_USE_SYSTEM_LIBRARIES: true
+  gh_user: jterral
+  gh_repo: jterral.github.io
+  gh_pass: $(GITHUB_TOKEN)
+
+steps:
+- task: UseRubyVersion@0
+  inputs:
+    versionSpec: '>= 2.6'
+    addToPath: true
+
+- task: Bash@3
+  displayName: 'bundle install'
+  inputs:
+    targetType: 'inline'
+    script: |
+      gem install jekyll bundler
+      bundle install
+
+- task: Bash@3
+  displayName: 'jekyll build'
+  inputs:
+    targetType: 'inline'
+    script: |
+      jekyll build
+
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+  inputs:
+    SourceFolder: '_site'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    artifactName: site
