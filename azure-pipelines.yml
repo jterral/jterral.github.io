@@ -31,8 +31,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      bundle update
-      bundle install
+      bundle install --retry=3 --jobs=4
 
 - task: Bash@3
   displayName: 'jekyll build'
