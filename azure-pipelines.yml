@@ -14,6 +14,13 @@ variables:
   gh_pass: $(GITHUB_TOKEN)
 
 steps:
+- task: Bash@3
+  displayName: 'apt-get install'
+  inputs:
+    targetType: 'inline'
+    script: |
+      sudo apt-get install ruby-dev
+
 - task: UseRubyVersion@0
   inputs:
     versionSpec: '>= 2.5'
