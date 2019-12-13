@@ -26,12 +26,13 @@ steps:
     script: |
       gem install jekyll bundler
 
-# - task: Bash@3
-#   displayName: 'bundle install'
-#   inputs:
-#     targetType: 'inline'
-#     script: |
-#       bundle install
+- task: Bash@3
+  displayName: 'bundle install'
+  inputs:
+    targetType: 'inline'
+    script: |
+      bundle update
+      bundle install
 
 - task: Bash@3
   displayName: 'jekyll build'
