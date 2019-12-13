@@ -31,7 +31,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      CALL gem install jekyll bundler
+      gem install jekyll bundler
       bundle install --retry=3 --jobs=4
 
 # - task: Bash@3
