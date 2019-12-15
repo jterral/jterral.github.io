@@ -33,6 +33,7 @@ steps:
     targetType: 'inline'
     script: |
       gem install jekyll bundler
+      gem install nokogiri
       bundle install --retry=3 --jobs=4
 
 - task: Bash@3
