@@ -56,9 +56,33 @@ steps:
     sourceFolder: '_site'
     targetFolder: $(Build.StagingDirectory)
 
+- task: CopyFiles@2
+  displayName: '[Script] Copy .git to: $(Build.StagingDirectory)'
+  inputs:
+    sourceFolder: '.git'
+    targetFolder: $(Build.StagingDirectory)
+
+- task: DeleteFiles@1
+  displayName: '[Script] Clean local folder'
+  inputs:
+    contents: '**/**'
+
 - script: |
     ls -al $(Build.StagingDirectory)
   displayName: '[Script] ls -al $(Build.StagingDirectory)'
+
+- script: |
+    ls -al
+  displayName: '[Script] ls -al'
+
+
+# - script: |
+#     git commit -am "Azure Pipelines Bot: Updated site via $(Build.SourceVersion)"
+#   displayName: '[Git] Creating commit'
+
+# - script: |
+#     git push origin gh-pages:master
+#   displayName: '[Git] git push to master'
 
 # - task: CopyFiles@2
 #   displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
