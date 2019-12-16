@@ -62,9 +62,15 @@ steps:
     git checkout master
   displayName: '[Git] Reset gh-pages and checkout master'
 
+- script: |
+    ls -al
+  displayName: '[Script] ls -al'
+
 - task: DeleteFiles@1
   inputs:
-    contents: '*'
+    contents: |
+      '*'
+      .bundle
 
 - script: |
     ls -al
