@@ -47,25 +47,24 @@ steps:
 #   displayName: '[Script] Clean source to commit new site'
 
 - task: CopyFiles@2
-  displayName: '[Script] Copy files to: /tmp'
+  displayName: '[Script] Copy files to: $(Build.StagingDirectory)'
   inputs:
     contents: |
-      _site/*
+      _site
       .git
-    targetFolder: /tmp
+    targetFolder: $(Build.StagingDirectory)
 
 - script: |
-    ls -al /tmp
-  displayName: '[Script] ls -al /tmp'
+    ls -al $(Build.StagingDirectory)
+  displayName: '[Script] ls -al $(Build.StagingDirectory)'
 
+# - task: CopyFiles@2
+#   displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+#   inputs:
+#     sourceFolder: '_site'
+#     targetFolder: '$(Build.ArtifactStagingDirectory)'
 
-- task: CopyFiles@2
-  displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
-  inputs:
-    sourceFolder: '_site'
-    targetFolder: '$(Build.ArtifactStagingDirectory)'
-
-- task: PublishBuildArtifacts@1
-  inputs:
-    pathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    artifactName: site
+# - task: PublishBuildArtifacts@1
+#   inputs:
+#     pathtoPublish: '$(Build.ArtifactStagingDirectory)'
+#     artifactName: site
