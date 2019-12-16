@@ -54,8 +54,10 @@ steps:
   displayName: '[Script] ls -al $(Build.StagingDirectory)'
 
 - script: |
+    git clean -fdX
     git reset --hard HEAD
     git checkout master
+    git status
   displayName: '[Git] Reset gh-pages and checkout master'
 
 - script: |
@@ -83,17 +85,15 @@ steps:
     ls -al
   displayName: '[Script] ls -al'
 
-# - script: |
-#     git config user.email $(gh_mail)
-#     git config user.name $(gh_user)
-#   workingDirectory: $(Build.StagingDirectory)
-#   displayName: '[Git] Configure User'
+- script: |
+    git config user.email $(gh_mail)
+    git config user.name $(gh_user)
+  displayName: '[Git] Configure User'
 
-# - script: |
-#     git add --all
-#     git commit -m "Azure Pipelines Bot: Updated site via $(Build.SourceVersion)"
-#   workingDirectory: $(Build.StagingDirectory)
-#   displayName: '[Git] Creating commit'
+- script: |
+    git add --all
+    git commit -m "Azure Pipelines Bot: Updated site via $(Build.SourceVersion)"
+  displayName: '[Git] Creating commit'
 
 # - script: |
 #     git push origin master
