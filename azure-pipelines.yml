@@ -58,18 +58,25 @@ steps:
   displayName: '[Script] ls -al $(Build.StagingDirectory)'
 
 - script: |
-    git config user.email $(gh_mail)
-    git config user.name $(gh_user)
-  workingDirectory: $(Build.StagingDirectory)
-  displayName: '[Git] Configure User'
+    git checkout .
+    git clean -fdX
+    git status
+    git checkout master
+  displayName: '[Git] Clean and checkout master'
 
-- script: |
-    git add --all
-    git commit -m "Azure Pipelines Bot: Updated site via $(Build.SourceVersion)"
-  workingDirectory: $(Build.StagingDirectory)
-  displayName: '[Git] Creating commit'
+# - script: |
+#     git config user.email $(gh_mail)
+#     git config user.name $(gh_user)
+#   workingDirectory: $(Build.StagingDirectory)
+#   displayName: '[Git] Configure User'
 
-- script: |
-    git push origin master
-  workingDirectory: $(Build.StagingDirectory)
-  displayName: '[Git] Push changes to master'
+# - script: |
+#     git add --all
+#     git commit -m "Azure Pipelines Bot: Updated site via $(Build.SourceVersion)"
+#   workingDirectory: $(Build.StagingDirectory)
+#   displayName: '[Git] Creating commit'
+
+# - script: |
+#     git push origin master
+#   workingDirectory: $(Build.StagingDirectory)
+#   displayName: '[Git] Push changes to master'
