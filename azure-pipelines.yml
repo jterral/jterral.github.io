@@ -21,8 +21,8 @@ steps:
     addToPath: true
 
 - script: |
-    sudo apt-get install build-essential patch ruby-dev zlib1g-dev liblzma-dev
-  displayName: '[Apt] apt-get install ruby-dev'
+    sudo apt-get install libxslt-dev libxml2-dev
+  displayName: '[Apt] apt-get install'
 
 - script: |
     gem install bundler
