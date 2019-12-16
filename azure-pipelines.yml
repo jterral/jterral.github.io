@@ -22,7 +22,7 @@ steps:
 
 - script: |
     sudo apt-get install libxslt-dev libxml2-dev
-  displayName: '[Apt] apt-get install'
+  displayName: '[Apt] Install dev dependencies'
 
 - script: |
     gem install bundler
@@ -37,20 +37,18 @@ steps:
     bundle install --retry=3 --jobs=4
   displayName: '[Jekyll] Bundle install'
 
-# - task: Bash@3
-#   displayName: 'jekyll build'
-#   inputs:
-#     targetType: 'inline'
-#     script: |
-#       jekyll build
+- script: |
+    bundle build
+    ls -al
+  displayName: '[Jekyll] Build Jekyll Static Site to _site'
 
-# - task: CopyFiles@2
-#   displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
-#   inputs:
-#     SourceFolder: '_site'
-#     TargetFolder: '$(Build.ArtifactStagingDirectory)'
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+  inputs:
+    SourceFolder: '_site'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
-# - task: PublishBuildArtifacts@1
-#   inputs:
-#     pathtoPublish: '$(Build.ArtifactStagingDirectory)'
-#     artifactName: site
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    artifactName: site
