@@ -47,11 +47,11 @@ steps:
     sourceFolder: '_site'
     targetFolder: $(Build.StagingDirectory)
 
-- task: CopyFiles@2
-  displayName: '[Script] Copy .git to: $(Build.StagingDirectory)'
-  inputs:
-    sourceFolder: '.git'
-    targetFolder: $(Build.StagingDirectory)/.git
+# - task: CopyFiles@2
+#   displayName: '[Script] Copy .git to: $(Build.StagingDirectory)'
+#   inputs:
+#     sourceFolder: '.git'
+#     targetFolder: $(Build.StagingDirectory)/.git
 
 - script: |
     ls -al $(Build.StagingDirectory)
@@ -61,6 +61,24 @@ steps:
     git reset --hard HEAD
     git checkout master
   displayName: '[Git] Reset gh-pages and checkout master'
+
+- task: DeleteFiles@1
+  inputs:
+    contents: '*'
+
+- script: |
+    ls -al
+  displayName: '[Script] ls -al'
+
+- task: CopyFiles@2
+  displayName: '[Script] Copy files to: $(Build.StagingDirectory)'
+  inputs:
+    sourceFolder: $(Build.StagingDirectory)
+    targetFolder: $(Build.SourcesDirectory)
+
+- script: |
+    ls -al
+  displayName: '[Script] ls -al'
 
 # - script: |
 #     git config user.email $(gh_mail)
