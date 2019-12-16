@@ -57,6 +57,7 @@ steps:
     git clean -fdX
     git reset --hard HEAD
     git checkout master
+    git reset --hard HEAD
     git status
   displayName: '[Git] Reset gh-pages and checkout master'
 
