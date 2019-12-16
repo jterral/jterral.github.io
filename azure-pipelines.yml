@@ -37,10 +37,6 @@ steps:
     bundle exec jekyll build
   displayName: '[Jekyll] Build Jekyll Static Site to _site'
 
-- script: |
-    ls -al
-  displayName: '[Script] ls -al'
-
 - task: CopyFiles@2
   displayName: '[Script] Copy files to: $(Build.StagingDirectory)'
   inputs:
@@ -71,6 +67,7 @@ steps:
   inputs:
     contents: |
       **/*
+      .bundle
 
 - script: |
     ls -al
