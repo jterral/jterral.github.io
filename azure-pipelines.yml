@@ -54,10 +54,9 @@ steps:
   displayName: '[Script] ls -al $(Build.StagingDirectory)'
 
 - script: |
-    git clean -fdX
     git reset --hard HEAD
     git checkout master
-    git reset --hard HEAD
+    git clean -ffdX
     git status
   displayName: '[Git] Reset gh-pages and checkout master'
 
