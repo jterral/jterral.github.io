@@ -46,12 +46,14 @@ steps:
 #     ls -al /tmp
 #   displayName: '[Script] Clean source to commit new site'
 
+- script: |
+    ls -al
+  displayName: '[Script] ls -al'
+
 - task: CopyFiles@2
   displayName: '[Script] Copy files to: $(Build.StagingDirectory)'
   inputs:
-    contents: |
-      _site
-      .git
+    sourceFolder: '_site'
     targetFolder: $(Build.StagingDirectory)
 
 - script: |
