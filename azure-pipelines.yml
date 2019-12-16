@@ -58,11 +58,9 @@ steps:
   displayName: '[Script] ls -al $(Build.StagingDirectory)'
 
 - script: |
-    git checkout .
-    git clean -fdX
-    git status
+    git reset --hard HEAD
     git checkout master
-  displayName: '[Git] Clean and checkout master'
+  displayName: '[Git] Reset gh-pages and checkout master'
 
 # - script: |
 #     git config user.email $(gh_mail)
