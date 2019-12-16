@@ -62,24 +62,11 @@ steps:
     sourceFolder: '.git'
     targetFolder: $(Build.StagingDirectory)/.git
 
-- task: DeleteFiles@1
-  displayName: '[Script] Clean local files and folders'
-  inputs:
-    contents: |
-      **/*
-      .bundle
-      .git
-      .gitignore
-
 # - task: DeleteFiles@1
-#   displayName: '[Script] Clean local folder'
-#   inputs:
-#     contents: '**/*'
-
-# - task: DeleteFiles@1
-#   displayName: '[Script] Clean local hidden file'
+#   displayName: '[Script] Delete all files and folders'
 #   inputs:
 #     contents: |
+#       **/*
 #       .bundle
 #       .git
 #       .gitignore
@@ -88,14 +75,15 @@ steps:
     ls -al $(Build.StagingDirectory)
   displayName: '[Script] ls -al $(Build.StagingDirectory)'
 
-- script: |
-    ls -al
-  displayName: '[Script] ls -al'
-
-
 # - script: |
-#     git commit -am "Azure Pipelines Bot: Updated site via $(Build.SourceVersion)"
-#   displayName: '[Git] Creating commit'
+#     ls -al
+#   displayName: '[Script] ls -al'
+
+- script: |
+    git add --all
+    git commit -m "Azure Pipelines Bot: Updated site via $(Build.SourceVersion)"
+  workingDirectory: $(Build.StagingDirectory)
+  displayName: '[Git] Creating commit'
 
 # - script: |
 #     git push origin gh-pages:master
