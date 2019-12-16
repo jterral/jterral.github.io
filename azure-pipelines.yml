@@ -33,12 +33,12 @@ steps:
   displayName: '[Gem] Install jekyll'
 
 - script: |
-    ls -al
     bundle install --retry=3 --jobs=4
   displayName: '[Jekyll] Bundle install'
 
 - script: |
-    bundle build
+    ls -al
+    bundle exec jekyll build
     ls -al
   displayName: '[Jekyll] Build Jekyll Static Site to _site'
 
