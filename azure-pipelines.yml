@@ -56,7 +56,7 @@ steps:
 - script: |
     git reset --hard HEAD
     git checkout master
-    git clean -ffdX
+    git clean -d -X -f -f
     git status
   displayName: '[Git] Reset gh-pages and checkout master'
 
@@ -91,6 +91,7 @@ steps:
   displayName: '[Git] Configure User'
 
 - script: |
+    git status
     git add --all
     git commit -m "Azure Pipelines Bot: Updated site via $(Build.SourceVersion)"
   displayName: '[Git] Creating commit'
