@@ -26,8 +26,11 @@ steps:
 
 - script: |
     gem install bundler
-    sudo gem install jekyll
-  displayName: '[Jekyll] Install bundler'
+  displayName: '[Gem] Install bundler'
+
+- script: |
+    gem install jekyll
+  displayName: '[Gem] Install jekyll'
 
 - script: |
     ls -al
