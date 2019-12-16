@@ -65,7 +65,11 @@ steps:
 - task: DeleteFiles@1
   displayName: '[Script] Clean local files and folders'
   inputs:
-    contents: '*'
+    contents: |
+      **/*
+      .bundle
+      .git
+      .gitignore
 
 # - task: DeleteFiles@1
 #   displayName: '[Script] Clean local folder'
