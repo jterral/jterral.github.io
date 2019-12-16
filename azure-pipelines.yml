@@ -20,9 +20,9 @@ steps:
     versionSpec: '>= 2.5'
     addToPath: true
 
-# - script: |
-#     sudo apt-get install ruby-all-dev
-#   displayName: '[Apt] apt-get install ruby-dev'
+- script: |
+    sudo apt-get install build-essential patch ruby-dev zlib1g-dev liblzma-dev
+  displayName: '[Apt] apt-get install ruby-dev'
 
 - script: |
     gem install bundler
