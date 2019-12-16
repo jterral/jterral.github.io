@@ -28,9 +28,9 @@ steps:
     gem install bundler
   displayName: '[Gem] Install bundler'
 
-- script: |
-    gem install jekyll
-  displayName: '[Gem] Install jekyll'
+# - script: |
+#     gem install jekyll
+#   displayName: '[Gem] Install jekyll'
 
 - script: |
     bundle install --retry=3 --jobs=4
@@ -65,11 +65,7 @@ steps:
 - task: DeleteFiles@1
   displayName: '[Script] Clean local folder'
   inputs:
-    contents: |
-      '**/**'
-      '.bundle'
-      '.git'
-      '.gitignore'
+    contents: '**/*'
 
 - script: |
     ls -al $(Build.StagingDirectory)
