@@ -43,26 +43,12 @@ steps:
     sourceFolder: '_site'
     targetFolder: $(Build.StagingDirectory)
 
-# - task: CopyFiles@2
-#   displayName: '[Script] Copy .git to: $(Build.StagingDirectory)'
-#   inputs:
-#     sourceFolder: '.git'
-#     targetFolder: $(Build.StagingDirectory)/.git
-
 - script: |
-    ls -al $(Build.StagingDirectory)
-  displayName: '[Script] ls -al $(Build.StagingDirectory)'
-
-- script: |
+    git clean -d -X -f -f
     git reset --hard HEAD
     git checkout master
-    git clean -d -X -f -f
     git status
   displayName: '[Git] Reset gh-pages and checkout master'
-
-- script: |
-    ls -al
-  displayName: '[Script] ls -al'
 
 - task: DeleteFiles@1
   displayName: '[Script] Clean all files and folder'
@@ -71,19 +57,11 @@ steps:
       **/*
       .bundle
 
-- script: |
-    ls -al
-  displayName: '[Script] ls -al'
-
 - task: CopyFiles@2
   displayName: '[Script] Copy files to: $(Build.StagingDirectory)'
   inputs:
     sourceFolder: $(Build.StagingDirectory)
     targetFolder: $(Build.SourcesDirectory)
-
-- script: |
-    ls -al
-  displayName: '[Script] ls -al'
 
 - script: |
     git config user.email $(gh_mail)
@@ -93,10 +71,9 @@ steps:
 - script: |
     git status
     git add --all
-    git commit -m "Azure Pipelines Bot: Updated site via $(Build.SourceVersion)"
+    git commit -m "Azure Pipelines Bot: Updated site via $(Build.BuildNumber) (hash: $(Build.SourceVersion))"
   displayName: '[Git] Creating commit'
 
-# - script: |
-#     git push origin master
-#   workingDirectory: $(Build.StagingDirectory)
-#   displayName: '[Git] Push changes to master'
+- script: |
+    git push origin master
+  displayName: '[Git] Push changes to master'
