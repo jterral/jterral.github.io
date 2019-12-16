@@ -12,6 +12,7 @@ variables:
   gh_user: jterral
   gh_repo: jterral.github.io
   gh_pass: $(GITHUB_TOKEN)
+  gh_mail: jonathan.terral@outlook.com
 
 steps:
 - task: UseRubyVersion@0
@@ -78,6 +79,12 @@ steps:
 # - script: |
 #     ls -al
 #   displayName: '[Script] ls -al'
+
+- script: |
+    git config user.email $(gh_mail)
+    git config user.name $(gh_user)
+  workingDirectory: $(Build.StagingDirectory)
+  displayName: '[Git] Configure User'
 
 - script: |
     git add --all
