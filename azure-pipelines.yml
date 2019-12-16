@@ -15,6 +15,17 @@ variables:
   gh_mail: jonathan.terral@outlook.com
 
 steps:
+- checkout: none
+  displayName: '[Git] No checkout'
+  persistCredentials: false
+
+- script: git clone https://$(gh_pass)@github.com/$(gh_user)/$(gh_repo).git .
+  workingDirectory: $(Build.SourcesDirectory)
+  displayName: "[Git] Clone GitHub Pages Repository"
+
+- script: 'git checkout gh-pages'
+  displayName: '[Git] Set gh-pages branch'
+
 - task: UseRubyVersion@0
   displayName: '[Ruby] Use Ruby >= 2.5'
   inputs:
@@ -44,7 +55,7 @@ steps:
     targetFolder: $(Build.StagingDirectory)
 
 - script: |
-    git clean -d -X -f -f
+    git clean -ffdx
     git reset --hard HEAD
     git checkout master
     git status
