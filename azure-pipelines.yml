@@ -67,9 +67,15 @@ steps:
   displayName: '[Script] ls -al'
 
 - task: DeleteFiles@1
+  displayName: '[Script] Clean all files and folder'
   inputs:
     contents: |
-      '*'
+      '**/*'
+
+- task: DeleteFiles@1
+  displayName: '[Script] Clean all hidden files'
+  inputs:
+    contents: |
       .bundle
 
 - script: |
