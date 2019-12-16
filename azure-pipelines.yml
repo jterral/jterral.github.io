@@ -60,12 +60,16 @@ steps:
   displayName: '[Script] Copy .git to: $(Build.StagingDirectory)'
   inputs:
     sourceFolder: '.git'
-    targetFolder: $(Build.StagingDirectory)
+    targetFolder: $(Build.StagingDirectory)/.git
 
 - task: DeleteFiles@1
   displayName: '[Script] Clean local folder'
   inputs:
-    contents: '**/**'
+    contents: |
+      '**/**'
+      '.bundle'
+      '.git'
+      '.gitignore'
 
 - script: |
     ls -al $(Build.StagingDirectory)
