@@ -40,17 +40,30 @@ steps:
     bundle exec jekyll build
   displayName: '[Jekyll] Build Jekyll Static Site to _site'
 
+# - script: |
+#     cp -R $(Build.StagingDirectory)/.git /tmp/
+#     cp -R $(Build.StagingDirectory)/_site/* /tmp/
+#     ls -al /tmp
+#   displayName: '[Script] Clean source to commit new site'
+
+- task: CopyFiles@2
+  displayName: '[Script] Copy files to: /tmp'
+  inputs:
+    contents: |
+      _site/*
+      .git
+    targetFolder: /tmp
+
 - script: |
-    cp -R $(Build.StagingDirectory)/.git /tmp/
-    cp -R $(Build.StagingDirectory)/_site/* /tmp/
     ls -al /tmp
-  displayName: '[Script] Clean source to commit new site'
+  displayName: '[Script] ls -al /tmp'
+
 
 - task: CopyFiles@2
   displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
   inputs:
-    SourceFolder: '_site'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    sourceFolder: '_site'
+    targetFolder: '$(Build.ArtifactStagingDirectory)'
 
 - task: PublishBuildArtifacts@1
   inputs:
