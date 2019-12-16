@@ -70,5 +70,6 @@ steps:
   displayName: '[Git] Creating commit'
 
 - script: |
-    git push origin master
+    git push origin gh-pages:master
+  workingDirectory: $(Build.StagingDirectory)
   displayName: '[Git] Push changes to master'
