@@ -74,10 +74,8 @@ stages:
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/gh-pages'))
   variables:
     - group: jterral.github.io
-    - name: gh_auth_header
-      value: $(echo -n "$(gh_user):$(gh_pass)" | base64);
     - name: gh_repo_url
-      value: https://$(github_pat)@github.com/$(gh_user)/$(gh_repo).git
+      value: https://$(gh_pat)@github.com/$(gh_user)/$(gh_repo).git
   jobs:
     - deployment: prod
       displayName: 'GitHub Pages deployment'
@@ -125,4 +123,4 @@ stages:
                   targetType: 'inline'
                   workingDirectory: $(Pipeline.Workspace)/web
                   script: |
-                    git push $(gh_repo_url) master
+                    git push origin master
