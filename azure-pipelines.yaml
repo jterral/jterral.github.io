@@ -5,6 +5,9 @@ name: $(Build.BuildId)_$(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)
 
 trigger:
   batch: true
+  branches:
+    include:
+      - gh-pages
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -70,7 +73,7 @@ stages:
   variables:
     gh_repo: jterral.github.io
     gh_user: jterral
-    gh_email: jonathan.trl@outlook.com
+    gh_email: $(GITHUB_EMAIL)
     gh_pass: $(GITHUB_PAT)
     gh_auth_header: $(echo -n "${gh_user}:$(gh_pass)" | base64);
   jobs:
