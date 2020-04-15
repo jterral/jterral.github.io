@@ -17,6 +17,8 @@ class App extends StatelessWidget {
       routes: {
         '/': (context) => HomeScreen(key: ValueKey('HomeScreen')),
         '/cityparkings': (context) =>  CityParkingsScreen(key: ValueKey('CityScreen')),
+        '/cityparkings/privacy-policy': (context) =>  CityParkingsScreen(key: ValueKey('CityScreen')),
+        '/cityparkings/support': (context) =>  CityParkingsScreen(key: ValueKey('CityScreen'))
       }
     );
   }
