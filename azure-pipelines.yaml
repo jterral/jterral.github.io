@@ -71,11 +71,9 @@ stages:
   dependsOn: Flutter
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
   variables:
-    gh_repo: jterral.github.io
-    gh_user: jterral
-    gh_email: $(GITHUB_EMAIL)
-    gh_pass: $(GITHUB_PAT)
-    gh_auth_header: $(echo -n "${gh_user}:$(gh_pass)" | base64);
+    - group: jterral.github.io
+    - name: gh_auth_header
+      value: $(echo -n "${gh_user}:$(gh_pass)" | base64);
   jobs:
     - deployment: prod
       displayName: 'GitHub Pages deployment'
