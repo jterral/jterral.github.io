@@ -1,0 +1,117 @@
+#
+# azure-pipelines.yaml
+
+name: $(Build.BuildId)_$(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)
+
+trigger:
+  batch: true
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages:
+- stage: Flutter
+  displayName: Build Flutter Web Application
+  jobs:
+  - job: Flutter
+    displayName: Build Flutter Web Application
+    steps:
+    - task: Bash@3
+      displayName: 'Getting Flutter source'
+      inputs:
+        targetType: inline
+        script: |
+          git clone https://github.com/flutter/flutter.git -b beta
+    - task: Bash@3
+      displayName: 'Installing Flutter'
+      inputs:
+        targetType: inline
+        script: |
+          sudo ln -sf `pwd`/flutter/bin/flutter /usr/bin/flutter
+    - task: Bash@3
+      displayName: 'Configuring Flutter'
+      inputs:
+        targetType: 'inline'
+        script: |
+          which flutter
+          flutter doctor -v
+          flutter config --no-analytics
+          flutter config --enable-web
+    - task: Bash@3
+      displayName: 'Testing Flutter project'
+      inputs:
+        targetType: 'inline'
+        script: |
+          flutter test
+    - task: Bash@3
+      displayName: 'Building Flutter project'
+      inputs:
+        targetType: 'inline'
+        script: |
+          flutter build web
+    - task: CopyFiles@2
+      displayName: 'Packaging Flutter project'
+      inputs:
+        targetFolder: $(Build.ArtifactStagingDirectory)
+        cleanTargetFolder: true
+        sourceFolder: build/web
+        contents: |
+          **
+    - task: PublishPipelineArtifact@1
+      displayName: 'Publishing Flutter project'
+      inputs:
+        targetPath: $(Build.ArtifactStagingDirectory)
+        artifactName: web
+
+- stage: prod
+  displayName: 'GitHub Pages'
+  dependsOn: Flutter
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  variables:
+    gh_repo: jterral.github.io
+    gh_user: jterral
+    gh_email: jonathan.trl@outlook.com
+    gh_pass: $(GITHUB_PAT)
+    gh_auth_header: $(echo -n "${gh_user}:$(gh_pass)" | base64);
+  jobs:
+    - deployment: prod
+      displayName: 'GitHub Pages deployment'
+      environment: 'GitHub Pages'
+      pool:
+        vmImage: 'ubuntu-latest'
+      strategy:
+        runOnce:
+          deploy:
+            steps:
+              - download: current
+                artifact: web
+              - task: Bash@3
+                displayName: 'Clone GitHub Pages'
+                inputs:
+                  targetType: 'inline'
+                  workingDirectory: $(Build.ArtifactStagingDirectory)
+                  script: |
+                    git clone --branch master https://$(github_pat)@github.com/$(gh_user)/$(gh_repo).git .
+              - task: Bash@3
+                displayName: 'Copy .git configuration'
+                inputs:
+                  targetType: 'inline'
+                  script: |
+                    cp -R $(Build.ArtifactStagingDirectory)/.git $(Pipeline.Workspace)/web/
+              - task: Bash@3
+                displayName: 'Configure GitHub account'
+                inputs:
+                  targetType: 'inline'
+                  workingDirectory: $(Pipeline.Workspace)/web
+                  script: |
+                    git config user.email $(gh_email)
+                    git config user.name 'Azure Pipelines'
+              - task: Bash@3
+                displayName: 'Pushing to GitHub Pages'
+                inputs:
+                  targetType: 'inline'
+                  workingDirectory: $(Pipeline.Workspace)/web
+                  script: |
+                    git add --all
+                    git commit -m "Azure Pipelines: updated site via $(Build.SourceVersion)"
+                    git push origin master
