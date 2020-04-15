@@ -75,7 +75,9 @@ stages:
   variables:
     - group: jterral.github.io
     - name: gh_auth_header
-      value: $(echo -n "${gh_user}:$(gh_pass)" | base64);
+      value: $(echo -n "$(gh_user):$(gh_pass)" | base64);
+    - name: gh_repo_url
+      value: https://$(github_pat)@github.com/$(gh_user)/$(gh_repo).git
   jobs:
     - deployment: prod
       displayName: 'GitHub Pages deployment'
@@ -94,19 +96,13 @@ stages:
                   targetType: 'inline'
                   workingDirectory: $(Build.ArtifactStagingDirectory)
                   script: |
-                    git clone --branch master https://$(github_pat)@github.com/$(gh_user)/$(gh_repo).git .
-
-              - script: ls -al $(Pipeline.Workspace)/web/
-
+                    git clone --branch master $(gh_repo_url) .
               - task: Bash@3
                 displayName: 'Copy .git configuration'
                 inputs:
                   targetType: 'inline'
                   script: |
                     cp -R $(Build.ArtifactStagingDirectory)/.git $(Pipeline.Workspace)/web/
-
-              - script: ls -al $(Pipeline.Workspace)/web/
-
               - task: Bash@3
                 displayName: '[Git] Configure GitHub account'
                 inputs:
@@ -129,4 +125,4 @@ stages:
                   targetType: 'inline'
                   workingDirectory: $(Pipeline.Workspace)/web
                   script: |
-                    git push origin master
+                    git push $(gh_repo_url) master
