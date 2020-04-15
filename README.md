@@ -14,17 +14,13 @@ This site use [Flutter](https://flutter.dev/) built on branch `gh-pages` and dep
 flutter run -d chrome
 ```
 
-### Build on machine
-
-```sh
-flutter build web
-```
-
 ### Serve on localhost
 
 After building web project:
 
 ```sh
 flutter packages pub global activate dhttpd
+
+flutter build web
 flutter pub global run dhttpd --path build/web/
 ```

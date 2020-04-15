@@ -89,20 +89,26 @@ stages:
               - download: current
                 artifact: web
               - task: Bash@3
-                displayName: 'Clone GitHub Pages'
+                displayName: '[Git] Clone GitHub Pages repository'
                 inputs:
                   targetType: 'inline'
                   workingDirectory: $(Build.ArtifactStagingDirectory)
                   script: |
                     git clone --branch master https://$(github_pat)@github.com/$(gh_user)/$(gh_repo).git .
+
+              - script: ls -al $(Pipeline.Workspace)/web/
+
               - task: Bash@3
                 displayName: 'Copy .git configuration'
                 inputs:
                   targetType: 'inline'
                   script: |
                     cp -R $(Build.ArtifactStagingDirectory)/.git $(Pipeline.Workspace)/web/
+
+              - script: ls -al $(Pipeline.Workspace)/web/
+
               - task: Bash@3
-                displayName: 'Configure GitHub account'
+                displayName: '[Git] Configure GitHub account'
                 inputs:
                   targetType: 'inline'
                   workingDirectory: $(Pipeline.Workspace)/web
@@ -110,11 +116,17 @@ stages:
                     git config user.email $(gh_email)
                     git config user.name 'Azure Pipelines'
               - task: Bash@3
-                displayName: 'Pushing to GitHub Pages'
+                displayName: '[Git] Creating commit'
                 inputs:
                   targetType: 'inline'
                   workingDirectory: $(Pipeline.Workspace)/web
                   script: |
                     git add --all
                     git commit -m "Azure Pipelines: updated site via $(Build.SourceVersion)"
+              - task: Bash@3
+                displayName: '[Git] Push changes to remote GitHub Pages'
+                inputs:
+                  targetType: 'inline'
+                  workingDirectory: $(Pipeline.Workspace)/web
+                  script: |
                     git push origin master
