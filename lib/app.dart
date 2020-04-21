@@ -12,7 +12,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       key: ValueKey('MainApp'),
       theme: JootlTheme.main,
-      title: "Jonathan Terral's home web",
+      title: "Jonathan Terral",
       initialRoute: '/',
       routes: {
         '/': (context) => HomeScreen(key: ValueKey('HomeScreen')),
