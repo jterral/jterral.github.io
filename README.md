@@ -16,8 +16,6 @@ flutter run -d chrome
 
 ### Serve on localhost
 
-After building web project:
-
 ```sh
 flutter packages pub global activate dhttpd
 

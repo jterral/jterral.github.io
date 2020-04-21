@@ -1,11 +1,11 @@
 {
-    "name": "jterral",
+    "name": "Jonathan Terral",
     "short_name": "jterral",
     "start_url": ".",
     "display": "minimal-ui",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "background_color": "#d11141",
+    "theme_color": "#d11141",
+    "description": "Jonathan Terral's home web.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
