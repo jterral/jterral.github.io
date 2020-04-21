@@ -38716,7 +38716,7 @@ U.xp.prototype={}
 X.lv.prototype={}
 S.tg.prototype={
 G:function(a){var t=$.Yz()
-return new S.on(P.aW(["/",new S.DF(),"/cityparkings",new S.DG(),"/cityparkings/privacy-policy",new S.DH(),"/cityparkings/support",new S.DI()],u.N,u.hw),"/","Jonathan Terral's home web",t,new D.by("MainApp",u.hp))}}
+return new S.on(P.aW(["/",new S.DF(),"/cityparkings",new S.DG(),"/cityparkings/privacy-policy",new S.DH(),"/cityparkings/support",new S.DI()],u.N,u.hw),"/","Jonathan Terral",t,new D.by("MainApp",u.hp))}}
 S.DF.prototype={
 $1:function(a){return new V.kw(new D.by("HomeScreen",u.hp))},
 $S:158}
