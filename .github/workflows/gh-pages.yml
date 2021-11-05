@@ -2,10 +2,11 @@ name: gh-pages
 
 on:
   push:
-    paths:
-      - ".github/workflows/gh-pages.yml"
-      - "./src"
-      - "./public"
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build:
