@@ -1,5 +1,4 @@
 import { Avatar, Box, Container, Grid, Link, Typography } from "@mui/material";
-import React from "react";
 import background from "./assets/bg-light.jpg";
 import logo from "./assets/me.jpg";
 import Copyright from "./components/Copyright";

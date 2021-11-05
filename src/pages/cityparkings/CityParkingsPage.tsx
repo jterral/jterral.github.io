@@ -4,7 +4,7 @@ import { makeStyles } from "@mui/styles";
 import React from "react";
 
 const theme = createTheme();
-const useStyles = makeStyles((themea) => ({
+const useStyles = makeStyles({
     root: {
         paddingLeft: theme.spacing(5),
         paddingRight: theme.spacing(5),
@@ -13,7 +13,7 @@ const useStyles = makeStyles((themea) => ({
     personnaldata: {
         paddingLeft: theme.spacing(2),
     },
-}));
+});
 
 export default function CityParkingsPage() {
     const classes = useStyles();
