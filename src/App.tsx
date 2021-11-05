@@ -1,5 +1,5 @@
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { HashRouter as Router, Route, Switch } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import CityParkingsPage from "./pages/cityparkings/CityParkingsPage";
 import LandingPage from "./pages/landing/LandingPage";
@@ -17,17 +17,16 @@ const theme = createTheme({
 
 export default function App() {
     return (
-        <Router>
-            <Switch>
-                <ThemeProvider theme={theme}>
-                    <Route exact path="/">
-                        <LandingPage />
-                    </Route>
-                    <Route path="/cityparkings">
-                        <CityParkingsPage />
-                    </Route>
-                </ThemeProvider>
-            </Switch>
-        </Router>
+        <ThemeProvider theme={theme}>
+            <HashRouter>
+                <Routes>
+                    <Route path="/" element={<LandingPage />} />
+                    <Route
+                        path="cityparkings/*"
+                        element={<CityParkingsPage />}
+                    />
+                </Routes>
+            </HashRouter>
+        </ThemeProvider>
     );
 }
