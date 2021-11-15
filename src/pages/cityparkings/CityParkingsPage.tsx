@@ -1,4 +1,11 @@
-import { AppBar, createTheme, Link, Toolbar, Typography } from "@mui/material";
+import {
+    AppBar,
+    Container,
+    createTheme,
+    Link,
+    Toolbar,
+    Typography,
+} from "@mui/material";
 import grey from "@mui/material/colors/grey";
 import { makeStyles } from "@mui/styles";
 import React from "react";
@@ -19,7 +26,7 @@ export default function CityParkingsPage() {
     const classes = useStyles();
     return (
         <React.Fragment>
-            <AppBar>
+            <AppBar data-testid="cityparkings-appbar">
                 <Toolbar variant="dense">
                     <Typography variant="h6" color="inherit" component="div">
                         City Parkings
@@ -28,7 +35,7 @@ export default function CityParkingsPage() {
             </AppBar>
             <Toolbar />
 
-            <div className={classes.root}>
+            <Container className={classes.root} data-testid="cityparkings-body">
                 <Typography
                     variant="h1"
                     align="center"
@@ -134,7 +141,7 @@ export default function CityParkingsPage() {
                     have questions, or if you would like to make a complaint,
                     please contact us by e-mail support@jootl.io.
                 </Typography>
-            </div>
+            </Container>
         </React.Fragment>
     );
 }
