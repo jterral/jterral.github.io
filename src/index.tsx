@@ -5,6 +5,7 @@ import { HashRouter } from "react-router-dom";
 import App from "./App";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
+import TagManager from "react-gtm-module";
 
 const theme = createTheme({
     palette: {
@@ -16,6 +17,12 @@ const theme = createTheme({
         },
     },
 });
+
+const tagManagerArgs = {
+    gtmId: "GTM-W7634GQ",
+};
+
+TagManager.initialize(tagManagerArgs);
 
 ReactDOM.render(
     <React.StrictMode>
