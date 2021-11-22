@@ -1,13 +1,7 @@
 {
-  "name": "Jonathan Terral",
   "short_name": "jterral",
-  "start_url": ".",
-  "display": "standalone",
-  "background_color": "#d11141",
-  "theme_color": "#d11141",
+  "name": "My Home to the Web",
   "description": "Jonathan Terral's home web.",
-  "orientation": "portrait-primary",
-  "prefer_related_applications": false,
   "icons": [
     {
       "src": "favicon.ico",
@@ -15,14 +9,21 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "icon-192.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "any maskable"
     },
     {
-      "src": "logo512.png",
+      "src": "icon-512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
-  ]
+  ],
+  "start_url": "/?source=pwa",
+  "display": "standalone",
+  "background_color": "#d11141",
+  "theme_color": "#d11141",
+  "orientation": "portrait-primary",
+  "prefer_related_applications": false
 }
