@@ -18,11 +18,13 @@ const theme = createTheme({
     },
 });
 
-const tagManagerArgs = {
-    gtmId: "GTM-W7634GQ",
-};
+if (process.env.NODE_ENV === "production") {
+    const tagManagerArgs = {
+        gtmId: "GTM-W7634GQ",
+    };
 
-TagManager.initialize(tagManagerArgs);
+    TagManager.initialize(tagManagerArgs);
+}
 
 ReactDOM.render(
     <React.StrictMode>
