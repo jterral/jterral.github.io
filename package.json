@@ -10,6 +10,7 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
+    "lint": "eslint src/**/*.{js,ts,tsx}",
     "prettier": "prettier --check \"./**/*.{html,css,js,ts,tsx}\"",
     "prettify": "prettier --write ."
   },
@@ -37,9 +38,9 @@
     "@types/react-dom": "^17.0.11",
     "@types/react-gtm-module": "^2.0.1",
     "@types/react-router-dom": "^5.3.2",
-    "eslint": "^7.32.0",
+    "eslint": "^8.6.0",
     "eslint-config-react": "^1.1.7",
-    "eslint-config-react-app": "^6.0.0",
+    "eslint-config-react-app": "^7.0.0",
     "gh-pages": "^3.2.3",
     "prettier": "^2.5.1"
   },
