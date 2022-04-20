@@ -1,6 +1,6 @@
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import { HashRouter } from "react-router-dom";
 import App from "./App";
 import "./index.css";
@@ -26,7 +26,11 @@ if (process.env.NODE_ENV === "production") {
     TagManager.initialize(tagManagerArgs);
 }
 
-ReactDOM.render(
+const container = document.getElementById("root");
+if (!container) throw new Error("Failed to find the root element");
+const root = ReactDOM.createRoot(container);
+
+root.render(
     <React.StrictMode>
         <ThemeProvider theme={theme}>
             <HashRouter>
@@ -34,7 +38,6 @@ ReactDOM.render(
             </HashRouter>
         </ThemeProvider>
     </React.StrictMode>,
-    document.getElementById("root"),
 );
 
 // If you want to start measuring performance in your app, pass a function
