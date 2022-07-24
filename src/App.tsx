@@ -9,7 +9,7 @@ export default function App() {
       <Route path="/" element={<LandingPage />} />
       <Route path="/apps/cityparkings" element={<CityParkingsPage />} />
       <Route
-        path="cityparkings"
+        path="cityparkings/*"
         element={<Navigate replace to="/apps/cityparkings" />}
       />
       <Route path="*" element={<Navigate replace to="/" />} />
