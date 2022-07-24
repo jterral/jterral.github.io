@@ -16,6 +16,14 @@ export default function LandingPage() {
           name="description"
           content="Senior software developer. Passionate about craftsmanship 🔨"
         />
+
+        <meta property="og:url" content="https://jterral.github.io/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Jonathan Terral" />
+        <meta
+          property="og:description"
+          content="Senior software developer. Passionate about craftsmanship 🔨"
+        />
       </Helmet>
 
       <Container
