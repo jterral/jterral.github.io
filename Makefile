@@ -69,3 +69,6 @@ yarn-upgrade-all:  ## Yarn upgrade all packages command
 		@types/node@latest \
 		eslint@latest \
 		prettier@latest
+
+	@echo "==> Yarn upgrade"
+	$(YARN) upgrade
