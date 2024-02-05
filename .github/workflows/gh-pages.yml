@@ -22,6 +22,10 @@ jobs:
         with:
           submodules: recursive
 
+      - run: |
+          ls -al
+          ls -al themes
+
       - uses: actions/configure-pages@v4
         id: pages
 
