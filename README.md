@@ -1,6 +1,6 @@
 ![Build Status](https://github.com/jterral/jterral.github.io/actions/workflows/gh-pages.yml/badge.svg?branch=main)
 [![License](https://img.shields.io/badge/license-MIT-blue)](https://opensource.org/licenses/MIT)
-![React Version](https://img.shields.io/badge/react-18.2.0-61DBFB?logo=react)
+![Hugo](https://img.shields.io/badge/markdown-Hugo-000000?logo=markdown)
 
 <br />
 <div align="center">
@@ -27,6 +27,12 @@
 ### Installation
 
 ```sh
-$> yarn install
-$> yarn start
+$> hugo new site jterral --format yaml
+```
+
+### Submodule
+
+```sh
+$> git submodule init
+$> git submodule update
 ```

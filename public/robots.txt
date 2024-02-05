@@ -1,5 +1,0 @@
-# https://jterral.github.io -- robots.txt
-
-User-agent: *
-
-Disallow: /static/media/

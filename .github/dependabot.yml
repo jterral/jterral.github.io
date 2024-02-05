@@ -7,15 +7,5 @@ updates:
     directory: ".github/workflows"
     schedule:
       interval: "weekly"
-      day: "friday"
-    labels:
-      - "dependencies"
-
-  # Maintain dependencies for npm
-  - package-ecosystem: "npm"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-      day: "friday"
     labels:
       - "dependencies"
