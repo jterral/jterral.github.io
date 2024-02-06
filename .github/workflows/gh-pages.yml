@@ -34,7 +34,7 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: production-files
+          name: github-pages
           path: ./public
 
   deploy:
@@ -50,7 +50,7 @@ jobs:
     steps:
       - uses: actions/download-artifact@v4
         with:
-          name: production-files
+          name: github-pages
           path: ./public
 
       - name: Deploy to GitHub Pages
