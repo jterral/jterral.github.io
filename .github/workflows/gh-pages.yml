@@ -1,4 +1,4 @@
-name: gh-pages
+name: GitHub Pages
 
 on:
   push:
@@ -8,34 +8,51 @@ on:
     branches:
       - main
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.122.0
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
         with:
-          node-version: 18
-      - run: yarn install
-      - run: yarn run prettier
-      - run: yarn test --coverage
-      - run: yarn run build
-      - uses: actions/upload-artifact@v3
+          submodules: recursive
+
+      - uses: actions/configure-pages@v4
+        id: pages
+
+      - uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: ${{ env.HUGO_VERSION }}
+
+      - run: |
+          hugo --minify
+
+      - uses: actions/upload-artifact@v4
         with:
           name: production-files
-          path: ./build
+          path: ./public
 
   deploy:
+    runs-on: ubuntu-22.04
     needs: build
-    runs-on: ubuntu-latest
-    environment: production
-    if: ${{ github.ref == 'refs/heads/main' }}
+    if: github.ref == 'refs/heads/main'
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+        name: github-pages
+        url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/download-artifact@v3
         with:
           name: production-files
-          path: ./build
-      - uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
+          path: ./public
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v3

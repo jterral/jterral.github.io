@@ -1,0 +1,64 @@
+baseURL: https://jterral.github.io/
+title: jterral
+theme: ["PaperMod"]
+
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+minify:
+  disableXML: true
+  minifyOutput: true
+
+defaultContentLanguage: fr
+defaultContentLanguageInSubdir: false
+
+languages:
+  fr:
+    languageName: ":fr:"
+    languageCode: fr-FR
+    weight: 1
+    params:
+      languageAltTitle: Français
+      dateFormat: "2 January 2006"
+  en:
+    languageName: ":gb:"
+    languageCode: en-US
+    weight: 2
+    params:
+      languageAltTitle: English
+      dateFormat: "January 2, 2006"
+
+params:
+  author: jootl
+  description: "Jonathan | Home on the web"
+  defaultTheme: dark
+  keywords: [Blog, Portfolio]
+
+  displayFullLangName: true
+
+  assets:
+    favicon: "/favicon.ico"
+    apple_touch_icon: "/apple-touch-icon.png"
+
+  profileMode:
+    enabled: true
+    title: "Hello, World!"
+    subtitle: "👨‍💻 I'm Jonathan | 💻 .NET backend developer"
+    imageUrl: "/me.webp"
+    imageTitle: "jterral"
+    imageWidth: 120
+    imageHeight: 120
+
+  socialIcons:
+    - name: "github"
+      url: "https://github.com/jterral"
+    - name: "linkedin"
+      url: "https://www.linkedin.com/in/jonathan-trl/"
+    - name: "phone"
+      url: "https://apps.apple.com/in/developer/jonathan-terral/id1491355711"
+    - name: "email"
+      url: "mailto:contact@jootl.xyz"
+    - name: "buymeacoffee"
+      url: "https://www.buymeacoffee.com/jootl"
