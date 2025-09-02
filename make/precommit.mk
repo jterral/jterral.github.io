@@ -10,8 +10,8 @@ PRECOMMIT ?= $(shell command -v pre-commit)
 	@if [ -z "$(PRECOMMIT)" ]; then echo "$(COLOR_RED)❌ pre-commit not found. Please install it.$(COLOR_RESET)"; exit 1; fi
 
 .PHONY: precommit-install
-precommit-install:  ## Install precommit hooks
-	@printf "$(COLOR_CYAN)>> Installing pre-commit hooks...$(COLOR_RESET)\n"
+precommit-install:  ## Install precommit executable
+	@printf "$(COLOR_CYAN)>> Installing pre-commit executable...$(COLOR_RESET)\n"
 	@$(PIP) install pre-commit --break-system-packages
 
 .PHONY: precommit-configure
