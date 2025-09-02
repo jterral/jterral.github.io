@@ -1,18 +1,7 @@
-# Dependabot configuration
-
 version: 2
 updates:
-
+  # Maintain dependencies for GitHub Actions
   - package-ecosystem: "github-actions"
-    directory: ".github/workflows"
-    schedule:
-      interval: "weekly"
-    labels:
-      - "dependencies"
-
-  - package-ecosystem: "gitsubmodule"
     directory: "/"
     schedule:
       interval: "weekly"
-    labels:
-      - "dependencies"
