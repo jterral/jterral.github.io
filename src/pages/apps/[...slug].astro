@@ -8,14 +8,14 @@ import Pill from "../../components/Pill.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 interface Props {
-  entry: CollectionEntry<"work">;
+  entry: CollectionEntry<"apps">;
 }
 
 // This is a dynamic route that generates a page for every Markdown file in src/content/
 // Read more about dynamic routes and this `getStaticPaths` function in the Astro docs:
 // https://docs.astro.build/en/core-concepts/routing/#dynamic-routes
 export async function getStaticPaths() {
-  const work = await getCollection("work");
+  const work = await getCollection("apps");
   return work.map((entry) => ({
     params: { slug: entry.id },
     props: { entry },
