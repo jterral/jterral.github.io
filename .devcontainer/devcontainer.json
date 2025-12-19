@@ -6,6 +6,9 @@
   },
   "customizations": {
     "vscode": {
+      "settings": {
+        "editor.formatOnSave": true
+      },
       "extensions": [
         // General
         "DavidAnson.vscode-markdownlint",
