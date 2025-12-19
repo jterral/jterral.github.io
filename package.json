@@ -1,5 +1,5 @@
 {
-  "name": "zany-zero",
+  "name": "jterral-github-io",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -9,6 +9,6 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.13.5"
+    "astro": "^5.16.6"
   }
 }

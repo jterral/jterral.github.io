@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#MISE description="Start Astro dev server"
+#MISE depends=["astro:check-prerequisites"]
+
+set -e
+
+npx astro dev

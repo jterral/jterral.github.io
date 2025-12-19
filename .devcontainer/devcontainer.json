@@ -22,6 +22,7 @@
       ]
     }
   },
+  "forwardPorts": [4321],
   "containerEnv": {
     "GITHUB_TOKEN": "${localEnv:GITHUB_TOKEN}"
   },
