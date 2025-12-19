@@ -4,6 +4,7 @@ min_version = "2025.12.10"
 PROJECT_NAME = "jterral.github.io"
 
 [tools]
+python = "3.13"
 pre-commit = "4.5.0"
 node = "25.2.1"
 

@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-set -e
+
+set -euo pipefail
 
 echo "🚀 Starting devcontainer start-up script..."
 

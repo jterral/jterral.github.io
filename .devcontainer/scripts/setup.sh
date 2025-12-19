@@ -1,25 +1,26 @@
 #!/usr/bin/env bash
 
-set -e
+set -euo pipefail
 
 # Install apt dependencies
 echo "📦 Installing apt dependencies..."
 sudo apt-get update
-echo "✅ Apt dependencies installed."
+echo "🟢 Apt dependencies installed."
 
 # Configure Git
 echo "🔧 Checking Git..."
 echo "🔑 GITHUB_TOKEN=${GITHUB_TOKEN:-<empty>}"
-echo "✅ Git configured."
+echo "🟢 Git configured."
 
 # Configure Mise
 echo "⚙️ Setting up mise environment..."
 mise trust .
 mise install
-echo "✅ Mise environment setup completed."
+echo "eval \"\$(mise activate bash)\"" >> ~/.bashrc
+echo "🟢 Mise environment setup completed."
 
 # Configure Pre-commit
 mise precommit:configure
-echo "✅ Pre-commit hooks configured."
+echo "🟢 Pre-commit hooks configured."
 
-echo "🟢 Devcontainer setup script completed."
+echo "✅ Devcontainer setup script completed."
