@@ -1,0 +1,14 @@
+min_version = "2025.12.10"
+
+[env]
+PROJECT_NAME = "jterral.github.io"
+
+[tools]
+pre-commit = "4.5.0"
+node = "25.2.1"
+
+[tasks.info]
+description = "Print project information"
+run = """
+echo "Project: $PROJECT_NAME"
+"""
