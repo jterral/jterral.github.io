@@ -22,4 +22,4 @@ echo "✅ Mise environment setup completed."
 mise precommit:configure
 echo "✅ Pre-commit hooks configured."
 
-echo "✅ Devcontainer setup script completed."
+echo "🟢 Devcontainer setup script completed."

@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -e
 
-echo -e "🚀 Starting devcontainer start-up script..."
+echo "🚀 Starting devcontainer start-up script..."
 
-echo -e "✅ Devcontainer start-up script completed."
+mise tasks
+
+echo "✅ Devcontainer start-up script completed."
