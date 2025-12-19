@@ -3,16 +3,23 @@
 set -e
 
 # Install apt dependencies
-echo "Installing apt dependencies..."
-# sudo apt-get update
+echo "📦 Installing apt dependencies..."
+sudo apt-get update
 echo "✅ Apt dependencies installed."
 
+# Configure Git
+echo "🔧 Checking Git..."
+echo "🔑 GITHUB_TOKEN=${GITHUB_TOKEN:-<empty>}"
+echo "✅ Git configured."
+
 # Configure Mise
-echo -e "Setting up mise environment..."
+echo "⚙️ Setting up mise environment..."
 mise trust .
-# mise install
-echo -e "✅ Mise environment setup completed."
+mise install
+echo "✅ Mise environment setup completed."
 
 # Configure Pre-commit
-# mise precommit:configure
-# echo -e "✅ Pre-commit configuration completed."
+mise precommit:configure
+echo "✅ Pre-commit hooks configured."
+
+echo "✅ Devcontainer setup script completed."

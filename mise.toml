@@ -9,6 +9,6 @@ node = "25.2.1"
 
 [tasks.info]
 description = "Print project information"
-run = """
+run = '''
 echo "Project: $PROJECT_NAME"
-"""
+'''

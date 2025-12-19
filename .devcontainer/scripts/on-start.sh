@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 set -e
 
-echo -e "🚀 Starting devcontainer setup script..."
+echo -e "🚀 Starting devcontainer start-up script..."
 
-echo "GITHUB_TOKEN=${GITHUB_TOKEN:-<empty>}"
-mise install
-
-echo -e "✅ Devcontainer setup script completed."
+echo -e "✅ Devcontainer start-up script completed."
