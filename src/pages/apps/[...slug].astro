@@ -1,5 +1,6 @@
 ---
 import { type CollectionEntry, getCollection, render } from "astro:content";
+import { getRelativeLocaleUrl } from "astro:i18n";
 
 import ContactCTA from "../../components/ContactCTA.astro";
 import Hero from "../../components/Hero.astro";
@@ -15,11 +16,17 @@ interface Props {
 // Read more about dynamic routes and this `getStaticPaths` function in the Astro docs:
 // https://docs.astro.build/en/core-concepts/routing/#dynamic-routes
 export async function getStaticPaths() {
-  const work = await getCollection("apps");
-  return work.map((entry) => ({
-    params: { slug: entry.id },
-    props: { entry },
-  }));
+  const apps = await getCollection("apps");
+  return apps.flatMap((entry) => [
+    {
+      params: { slug: entry.id },
+      props: { entry },
+    },
+    {
+      params: { slug: `fr/${entry.id}` },
+      props: { entry },
+    },
+  ]);
 }
 
 const { entry } = Astro.props;
@@ -55,7 +62,6 @@ const { Content } = await render(entry);
         </div>
       </main>
     </div>
-    <ContactCTA />
   </div>
 </BaseLayout>
 
