@@ -16,19 +16,17 @@ interface Props {
 // Read more about dynamic routes and this `getStaticPaths` function in the Astro docs:
 // https://docs.astro.build/en/core-concepts/routing/#dynamic-routes
 export async function getStaticPaths() {
-  const apps = await getCollection("apps");
-  return apps.flatMap((entry) => [
-    {
-      params: { slug: entry.id },
-      props: { entry },
-    },
-    {
-      params: { slug: `fr/${entry.id}` },
-      props: { entry },
-    },
-  ]);
+  const pages = await getCollection("apps");
+
+  const paths = pages.map((page) => {
+    const [lang, ...slug] = page.id.split("/");
+    return { params: { lang, slug: slug.join("/") || undefined }, props: page };
+  });
+
+  return paths;
 }
 
+const { lang, slug } = Astro.params;
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 ---
