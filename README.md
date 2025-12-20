@@ -1,20 +1,34 @@
-# Astro Starter Kit: Portfolio
+# jterral.github.io
 
-```sh
-npm create astro@latest -- --template portfolio
+A personal portfolio and blog website built with [Astro](https://astro.build), a modern static site generator focused on performance and content-driven design.
+
+## 🎯 About This Project
+
+This website showcases my work, skills, and thoughts through a collection of pages including a portfolio section, blog articles, and more. It's built on top of the [Astro Starter Kit: Portfolio](https://github.com/withastro/astro/tree/latest/examples/portfolio) template and has been customized to fit my personal branding and needs.
+
+## ✨ Key Features
+
+- **Fast & Performant**: Built with Astro's islands architecture for minimal JavaScript
+- **Content Collections**: Type-safe content management with Astro's Content Layer API
+- **Responsive Design**: Mobile-first design that works beautifully on all devices
+- **SEO Optimized**: Semantic HTML and proper metadata for better search visibility
+- **Dark Mode Support**: Theme toggle component for user preference
+- **Accessible**: Built with WCAG accessibility standards in mind
+
+## 📁 Project Structure
+
+```txt
+src/
+├── components/        # Reusable Astro and framework components
+├── content/          # Markdown content for blog posts and apps
+├── layouts/          # Layout templates
+├── pages/            # Page routes and dynamic routes
+└── styles/           # Global and component-scoped styles
 ```
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/portfolio)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/portfolio)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/portfolio/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![portfolio](https://user-images.githubusercontent.com/357379/210779178-a98f0fb7-6b1a-4068-894c-8e1403e26654.jpg)
 
 ## 🧞 Commands
 
-All commands are run from the root of the project, from a terminal:
+All commands are run from the root of the project:
 
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
@@ -25,6 +39,19 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-## 👀 Want to learn more?
+## 🚀 Getting Started
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Start the development server: `npm run dev`
+4. Open [http://localhost:4321](http://localhost:4321) in your browser
+
+## 📚 Learn More
+
+- [Astro Documentation](https://docs.astro.build)
+- [Astro Discord Community](https://astro.build/chat)
+- [Astro Starter Kit: Portfolio](https://github.com/withastro/astro/tree/latest/examples/portfolio)
+
+## 📄 License
+
+See [LICENSE.md](./LICENSE.md) for details.
