@@ -18,15 +18,13 @@ interface Props {
 export async function getStaticPaths() {
   const pages = await getCollection("apps");
 
-  const paths = pages.map((page) => {
-    const [lang, ...slug] = page.id.split("/");
-    return { params: { lang, slug: slug.join("/") || undefined }, props: page };
+  const paths = pages.map((p) => {
+    return { params: { slug: p.id }, props: { entry: p } };
   });
 
   return paths;
 }
 
-const { lang, slug } = Astro.params;
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 ---

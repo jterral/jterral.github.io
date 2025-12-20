@@ -5,9 +5,10 @@ import Hero from "../components/Hero.astro";
 import PortfolioPreview from "../components/PortfolioPreview.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const projects = (await getCollection("apps")).sort(
-  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
-);
+const apps = await getCollection("apps");
+const projects = apps
+  .filter((app) => !app.id.startsWith("privacy-policy/"))
+  .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
 ---
 
 <BaseLayout
