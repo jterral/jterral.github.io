@@ -4,7 +4,7 @@ set -euo pipefail
 
 # Install apt dependencies
 echo "📦 Installing apt dependencies..."
-sudo apt-get update
+# sudo apt-get update
 echo "🟢 Apt dependencies installed."
 
 # Configure Git

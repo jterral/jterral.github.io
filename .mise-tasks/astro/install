@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#MISE description="Install dependencies"
+#MISE depends=["astro:check-prerequisites"]
+
+set -e
+
+npm install
