@@ -1,53 +1,44 @@
-name: GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
+  workflow_dispatch:
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+permissions:
+  contents: write
+  pages: write
+  id-token: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      HUGO_VERSION: 0.122.0
-      HUGO_ENVIRONMENT: production
-      HUGO_ENV: production
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
+      - uses: withastro/action@v5
         with:
-          submodules: recursive
+          path: .
+          node-version: 24
 
-      - uses: actions/configure-pages@v4
-        id: pages
-
-      - uses: peaceiris/actions-hugo@v2
+  versioning:
+    needs: build
+    runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.get_calver.outputs.tag }}
+      version: ${{ steps.get_calver.outputs.version }}
+    steps:
+      - id: get_calver
+        uses: jterral/calendar-versioning-action@v1
         with:
-          hugo-version: ${{ env.HUGO_VERSION }}
-
-      - run: |
-          hugo --minify
-
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./public
+          tag-push: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }}
 
   deploy:
-    runs-on: ubuntu-22.04
-    needs: build
-    if: github.ref == 'refs/heads/main'
-    permissions:
-      pages: write
-      id-token: write
+    needs: versioning
+    runs-on: ubuntu-latest
     environment:
-        name: github-pages
-        url: ${{ steps.deployment.outputs.page_url }}
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
