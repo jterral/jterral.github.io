@@ -1,5 +1,5 @@
 {
-  "name": "devcontainer-betclic-toolkit",
+  "name": "devcontainer-jterral-github-io",
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
   "features": {
     "ghcr.io/devcontainers-extra/features/mise:1": {}
