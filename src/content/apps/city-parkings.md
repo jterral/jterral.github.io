@@ -27,4 +27,4 @@ Stop wasting time and avoid the unpleasant surprise of finding a full parking lo
 
 ## Privacy Policy
 
-For information about how we handle your data, please read our [Privacy Policy](./privacy-policy/city-parkings).
+For information about how we handle your data, please read our [Privacy Policy](/apps/privacy-policy/city-parkings).
