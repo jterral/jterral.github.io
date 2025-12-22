@@ -10,7 +10,6 @@
         "editor.formatOnSave": true
       },
       "extensions": [
-        // General
         "DavidAnson.vscode-markdownlint",
         "eamodio.gitlens",
         "EditorConfig.EditorConfig",
@@ -18,7 +17,7 @@
         "IBM.output-colorizer",
         "redhat.vscode-yaml",
         "tamasfe.even-better-toml",
-        // Project Specific
+
         "astro-build.astro-vscode",
         "christian-kohler.npm-intellisense",
         "fill-labs.dependi"
